@@ -34,12 +34,13 @@ const frames = [
 //  const frame = [6, 3]
 function frameScore(frame) {
   let score = frame[0] + frame[1]
-  console.log(frames.indexOf(frame)) 
+  // console.log(frames.indexOf(frame)) 
   
   let frameIndex = frames.indexOf(frame)
-  console.log(frames[frameIndex + 1])
+  
   if(score === 10){
-    score + frames[frameIndex + 1][0]
+    console.log(frames[frameIndex + 1][0], "this bonus")
+    score += frames[frameIndex + 1][0]
   }
   return score
 }
