@@ -40,7 +40,19 @@ function frameScore(frame) {
   if(frame[0] === 10 && frameIndex < 9){
     console.log('STRIKE')
     score += (frames[frameIndex + 1][0] + frames[frameIndex + 1][1])
+    // Double strike value
+    if(frames[frameIndex + 1][0] === 10){
+      console.log(`First strike ${frame[0]} at ${frameIndex} and second strike ${frames[frameIndex + 1][0]} at ${frameIndex +1} `)
+      score += frames[frameIndex + 2][0]
+    }
+    
   }
+
+  // Double strike value
+  // if(frame[0] === 10 && frames[frameIndex + 1][0] === 10 && frameIndex < 8){
+  //   console.log(`First strike ${frame[0]} at ${frameIndex} and second strike ${frames[frameIndex + 1][0]} at ${frameIndex +1} `)
+  //   score += (frames[frameIndex + 1][0] + frames[frameIndex + 2][0])
+  // }
 
   // Add spare value
   if(score === 10 && frameIndex < 9){
@@ -56,7 +68,6 @@ function frameScore(frame) {
       score += frames[frameIndex][2]
     }
   }
-
   return score
 }
 
