@@ -27,65 +27,37 @@ const frames = [
   [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]
 ]
 
-// 
-
-// Take a single frame and score it. //
-// 
-//  const frame = [6, 3]
 function frameScore(frame) {
   let score = frame[0] + frame[1]
   let frameIndex = frames.indexOf(frame)
-  
   // Add strike value
   if(frame[0] === 10 && frameIndex < 9){
-    console.log('STRIKE')
     score += (frames[frameIndex + 1][0] + frames[frameIndex + 1][1])
     // Double strike value
-    if(frames[frameIndex + 1][0] === 10){
-      console.log(`First strike ${frame[0]} at ${frameIndex} and second strike ${frames[frameIndex + 1][0]} at ${frameIndex +1} `)
+    if(frames[frameIndex + 1][0] === 10 && frameIndex < 8){
       score += frames[frameIndex + 2][0]
     }
-    
   }
-
-  // Double strike value
-  // if(frame[0] === 10 && frames[frameIndex + 1][0] === 10 && frameIndex < 8){
-  //   console.log(`First strike ${frame[0]} at ${frameIndex} and second strike ${frames[frameIndex + 1][0]} at ${frameIndex +1} `)
-  //   score += (frames[frameIndex + 1][0] + frames[frameIndex + 2][0])
-  // }
 
   // Add spare value
   if(score === 10 && frameIndex < 9){
-    console.log(frames[frameIndex + 1][0], "this bonus")
     score += frames[frameIndex + 1][0]
   }
-
+  // 9th Frame
   if(frameIndex === 9){
-    // console.log(`Tenth Frame Score Entry ${score}`)
-    
     score = (frame[0] + frame[1]+ frame[2])
-    
-    // console.log(`Tenth Frame Score with first strike ${score}`)
-    // if(frame[0] + frame[1] === 10){
-    //   score += frames[frameIndex][2]
-    // }
   }
   return score
 }
 
 // Develop game score total function
-
 function gameScore(frames){
   let gameScore = 0
   frames.forEach(frame => {
     gameScore = gameScore + frameScore(frame)
-    // console.log(gameScore)
   });
-  
   return gameScore
 }
- console.log(gameScore(frames))
-
-// add a function for with a complexending. //
-// if frameTotal = 10 add next frame [0] 
+ 
+console.log(gameScore(frames))
 
