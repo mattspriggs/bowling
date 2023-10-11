@@ -1,7 +1,7 @@
 // Score 64 (simple game):
-// const frames = [
-//   [2, 0], [4, 2], [6, 0], [2, 4], [1, 5], [7, 0], [5, 2], [7, 0], [2, 6], [8, 1]
-// ]
+const frames = [
+  [2, 0], [4, 2], [6, 0], [2, 4], [1, 5], [7, 0], [5, 2], [7, 0], [2, 6], [8, 1]
+]
 
 // Score 71 (with spares):
 // const frames = [
@@ -31,10 +31,20 @@
 
 // Take a single frame and score it. //
 // 
- const frame = [6, 3]
+//  const frame = [6, 3]
 function frameScore(frame) {
   let score = frame[0] + frame[1] 
   return score
 }
 
-console.log(frameScore(frame))
+// Develop game score total function
+
+function gameScore(frames){
+  let gameScore = 0
+  frames.forEach(frame => {
+    gameScore = gameScore + frameScore(frame)
+  });
+  return gameScore
+}
+ console.log(gameScore(frames))
+
