@@ -4,13 +4,13 @@
 // ]
 
 // Score 71 (with spares):
-const frames = [
-  [6, 1], [4, 0], [6, 4], [2, 7], [3, 5], [5, 0], [5, 5], [0, 0], [1, 6], [7, 2]
-]
-// Score 104 (with spares and strikes):
 // const frames = [
-//   [6, 4], [8, 0], [10, 0], [2, 7], [5, 5], [4, 0], [10, 0], [2, 1], [2, 6], [4, 4]
+//   [6, 1], [4, 0], [6, 4], [2, 7], [3, 5], [5, 0], [5, 5], [0, 0], [1, 6], [7, 2]
 // ]
+// Score 104 (with spares and strikes):
+const frames = [
+  [6, 4], [8, 0], [10, 0], [2, 7], [5, 5], [4, 0], [10, 0], [2, 1], [2, 6], [4, 4]
+]
 //
 // Score 119 (with spares, strikes and a double strike):
 // const frames = [
@@ -34,14 +34,20 @@ const frames = [
 //  const frame = [6, 3]
 function frameScore(frame) {
   let score = frame[0] + frame[1]
-  // console.log(frames.indexOf(frame)) 
-  
   let frameIndex = frames.indexOf(frame)
   
-  if(score === 10){
+  // Add strike value
+  if(frame[0] === 10){
+    console.log('STRIKE')
+    score += (frames[frameIndex + 1][0] + frames[frameIndex + 1][1])
+  }
+
+  // Add spare value
+  if(score === 10 && frameIndex < 10){
     console.log(frames[frameIndex + 1][0], "this bonus")
     score += frames[frameIndex + 1][0]
   }
+
   return score
 }
 
