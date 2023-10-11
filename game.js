@@ -13,9 +13,9 @@
 // ]
 //
 // Score 119 (with spares, strikes and a double strike):
-const frames = [
-  [1, 2], [6, 4], [5, 4], [10, 0], [7, 2], [10, 0], [10, 0], [5, 2], [7, 0], [4, 4]
-]
+// const frames = [
+//   [1, 2], [6, 4], [5, 4], [10, 0], [7, 2], [10, 0], [10, 0], [5, 2], [7, 0], [4, 4]
+// ]
 //
 // Score 141 (includes a strike on the last frame):
 // const frames = [
@@ -23,9 +23,9 @@ const frames = [
 // ]
 //
 // Score 300 (perfect game):
-// const frames = [
-//   [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]
-// ]
+const frames = [
+  [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]
+]
 
 // 
 
@@ -61,12 +61,14 @@ function frameScore(frame) {
   }
 
   if(frameIndex === 9){
-    if(frame[0] === 10){
-      score += (frames[frameIndex][1] + frames[frameIndex][2])
-    }
-    if(frame[0] + frame[1] === 10){
-      score += frames[frameIndex][2]
-    }
+    // console.log(`Tenth Frame Score Entry ${score}`)
+    
+    score = (frame[0] + frame[1]+ frame[2])
+    
+    // console.log(`Tenth Frame Score with first strike ${score}`)
+    // if(frame[0] + frame[1] === 10){
+    //   score += frames[frameIndex][2]
+    // }
   }
   return score
 }
@@ -77,7 +79,9 @@ function gameScore(frames){
   let gameScore = 0
   frames.forEach(frame => {
     gameScore = gameScore + frameScore(frame)
+    // console.log(gameScore)
   });
+  
   return gameScore
 }
  console.log(gameScore(frames))
