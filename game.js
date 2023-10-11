@@ -2,6 +2,7 @@
 // const frames = [
 //   [2, 0], [4, 2], [6, 0], [2, 4], [1, 5], [7, 0], [5, 2], [7, 0], [2, 6], [8, 1]
 // ]
+
 // Score 71 (with spares):
 // const frames = [
 //   [6, 1], [4, 0], [6, 4], [2, 7], [3, 5], [5, 0], [5, 5], [0, 0], [1, 6], [7, 2]
@@ -25,3 +26,15 @@
 // const frames = [
 //   [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]
 // ]
+
+// 
+
+// Take a single frame and score it. //
+// 
+ const frame = [6, 3]
+function frameScore(frame) {
+  let score = frame[0] + frame[1] 
+  return score
+}
+
+console.log(frameScore(frame))
